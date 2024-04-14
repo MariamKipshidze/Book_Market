@@ -39,7 +39,8 @@ class Author(models.Model):
 class Books(models.Model):
     name = models.CharField(verbose_name="Title", max_length=255)
     page_count = models.IntegerField(verbose_name="Page Count")
-    category = models.CharField(max_length=200, verbose_name="Category", null=True)
+    category = models.ForeignKey(Category, max_length=200, verbose_name="Category", null=True,
+                                 on_delete=models.SET_NULL)
     author = models.ForeignKey(Author, verbose_name="Author", on_delete=models.CASCADE)
     cover = models.ForeignKey(CoverType, verbose_name="Cover", null=True, on_delete=models.CASCADE)
     price = models.DecimalField(verbose_name="Price", max_digits=6, decimal_places=2)
