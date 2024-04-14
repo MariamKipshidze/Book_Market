@@ -7,7 +7,7 @@ from .models import Books
 
 # Create your views here.
 def get_books(request):
-    info = list(Books.objects.values_list('name', 'author', 'category', 'page_count', 'price'))
+    info = list(Books.objects.values_list('name', 'author', 'category', 'page_count', 'price', 'cover'))
     return JsonResponse(info, safe=False)
 
 
